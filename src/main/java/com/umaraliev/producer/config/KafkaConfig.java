@@ -35,8 +35,7 @@ public class KafkaConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, UserRegistrationDto> kafkaTemplate()
-    {
+    public KafkaTemplate<String, UserRegistrationDto> kafkaTemplate()    {
         return  new KafkaTemplate<>(producerFactory());
     }
 }

@@ -1,10 +1,11 @@
-package com.umaraliev.producer.service;
+package com.umaraliev.producer.service.UserServiceImpl;
 
 import com.umaraliev.producer.dto.UserRegistrationDto;
 import com.umaraliev.producer.model.Role;
 import com.umaraliev.producer.model.User;
 import com.umaraliev.producer.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.umaraliev.producer.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,17 +19,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
 
-	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
 
-	public UserServiceImpl(UserRepository userRepository) {
-		super();
-		this.userRepository = userRepository;
-	}
+	private final BCryptPasswordEncoder passwordEncoder;
+
 
 	@Override
 	public User save(UserRegistrationDto user) {
